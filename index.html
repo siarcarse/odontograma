@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Toth</title>
+    <!-- Bootstrap CSS -->
+    <link href="css/base.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Odontograma</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div id="controls" class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label id="fractura" class="btn btn-danger active">
+                                        <input type="radio" name="options" id="option1" autocomplete="off" checked>Fractura</label>
+                                    <label id="restauracion" class="btn btn-primary">
+                                        <input type="radio" name="options" id="option2" autocomplete="off"> Restauración
+                                    </label>
+                                    <label id="extraccion" class="btn btn-warning">
+                                        <input type="radio" name="options" id="option3" autocomplete="off"> Extracción
+                                    </label>
+                                    <label id="puente" class="btn btn-primary">
+                                        <input type="radio" name="options" id="option4" autocomplete="off"> Puente
+                                    </label>
+                                    <label id="borrar" class="btn btn-default">
+                                        <input type="radio" name="options" id="option5" autocomplete="off"> Borrar
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tr" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    </div>
+                    <div id="tl" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="br" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    </div>
+                    <div id="bl" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    function createOdontogram() {
+        var html = "";
+        for (var i = 1; i < 17; i++) {
+            html += '<div class="diente">' +
+                '<span style="margin-left: 45px; margin-bottom:5px;" class="badge">' + i + '</span>' +
+                '<input id="diente' + i + '" name="valor" type="hidden" value="' + i + '">' +
+                '<div class="cuadro click">' +
+                '<input id="t' + i + '" name="cuadro" type="hidden" value="t' + i + '">' +
+                '</div>' +
+                '<div class="cuadro izquierdo click">' +
+                '<input id="l' + i + '" name="cuadro" type="hidden" value="l' + i + '">' +
+                '</div>' +
+                '<div class="cuadro debajo click">' +
+                '<input id="b' + i + '" name="cuadro" type="hidden" value="b' + i + '">' +
+                '</div>' +
+                '<div class="cuadro derecha click click">' +
+                '<input id="r' + i + '" name="cuadro" type="hidden" value="r' + i + '">' +
+                '</div>' +
+                '<div class="centro click">' +
+                '<input id="c' + i + '" name="cuadro" type="hidden" value="c' + i + '">' +
+                '</div>' +
+                '</div>';
+            if (i == 8) {
+                $("#tr").append(html);
+                html = "";
+            } else if (i == 16) {
+                $("#tl").append(html);
+                html = "";
+            }
+        }
+        html = "";
+        for (var i = 33 - 1; i >= 17; i--) {
+            html += '<div style="top: 10px;" class="diente kill">' +
+                '<span style="margin-left: 45px; margin-bottom:5px;" class="badge">' + i + '</span>' +
+                '<input id="diente' + i + '" name="valor" type="hidden" value="' + i + '">' +
+                '<div class="cuadro click">' +
+                '<input id="t' + i + '" name="cuadro" type="hidden" value="t' + i + '">' +
+                '</div>' +
+                '<div class="cuadro izquierdo click">' +
+                '<input id="l' + i + '" name="cuadro" type="hidden" value="l' + i + '">' +
+                '</div>' +
+                '<div class="cuadro debajo click">' +
+                '<input id="b' + i + '" name="cuadro" type="hidden" value="b' + i + '">' +
+                '</div>' +
+                '<div class="cuadro derecha click">' +
+                '<input id="r' + i + '" name="cuadro" type="hidden" value="r' + i + '">' +
+                '</div>' +
+                '<div class="centro click">' +
+                '<input id="c' + i + '" name="cuadro" type="hidden" value="c' + i + '">' +
+                '</div>' +
+                '</div>';
+            if (i == 25) {
+                $("#br").append(html);
+                html = "";
+            } else if (i == 17) {
+                $("#bl").append(html);
+                html = "";
+            };
+        }
+    }
+    $(document).ready(function() {
+        createOdontogram();
+        $(".click").click(function(event) {
+            var control = $("#controls").children().find('.active').attr('id');
+            var cuadro = $(this).find("input[name=cuadro]:hidden").val(); //obtenemos el valor del cuadro al que le dimos click
+            console.log(control)
+            switch (control) {
+                case "fractura":
+                    if ($(this).hasClass("click-blue")) {
+                        $(this).removeClass('click-blue');
+                        $(this).addClass('click-red');
+                    } else {
+                        if ($(this).hasClass("click-red")) {
+                            $(this).removeClass('click-red');
+                        } else {
+                            $(this).addClass('click-red');
+                        }
+                    }
+                    break;
+                case "restauracion":
+                    if ($(this).hasClass("click-red")) {
+                        $(this).removeClass('click-red');
+                        $(this).addClass('click-blue');
+                    } else {
+                        if ($(this).hasClass("click-blue")) {
+                            $(this).removeClass('click-blue');
+                        } else {
+                            $(this).addClass('click-blue');
+                        }
+                    }
+                    break;
+                case "extraccion":
+                //<span class="label label-danger">Muerto</span>
+                    $(this).parent().children().each(function(index, el) {
+                        console.log($(el).hasClass("click"))
+                        if($(el).hasClass("click")){
+                            $(el).addClass('click-delete');
+                        }
+                    });
+                    break;
+                case "puente":
+                    console.log("puente case")
+                    break;
+                default:
+                    console.log("borrar case")
+            }
+            return false;
+        });
+        return false;
+    });
+    </script>
+</body>
+
+</html>
