@@ -126,6 +126,7 @@
             };
         }
     }
+    var arrayPuente = [];
     $(document).ready(function() {
         createOdontogram();
         $(".click").click(function(event) {
@@ -165,13 +166,25 @@
                     });
                     break;
                 case "puente":
-                    /*var dientePosition = $(this).position();
-                    $('<div id="puente" class="click-red">lala</div>').position(dientePosition);
-                    console.log("holi");*/
+                    var dientePosition = $(this).position();
+                    var noDiente = $(this).parent().children().first().text();
+                    var left = 0, width = 0;
+                    if (arrayPuente.length < 1) {
+                        $(this).parent().children('.cuadro').css('border-color', 'red');
+                        arrayPuente.push({diente:noDiente, father:null});
+                    }else {
+                        $(this).parent().children('.cuadro').css('border-color', 'red');
+                        arrayPuente.push({diente:noDiente, father:arrayPuente[0].diente});
+                        var diferencia = Math.abs((parseInt(arrayPuente[1].diente) - parseInt(arrayPuente[1].father)));
+                        if(diferencia ==1) width = diferencia * 60;
+                        else width = diferencia * 50;
+                        $(this).parent().append('<div style="z-index: 9999; height: 5px; width:'+width+'px;" id="puente" class="click-red"></div>');
+                        $(this).parent().children().last().css({ "position": "absolute", "top": "80px", "left": "50px" });
+                    }
                     
                     break;
                 default:
-                    console.log("borrar case")
+                    console.log("borrar case");
             }
             return false;
         });
