@@ -130,7 +130,8 @@
         createOdontogram();
         $(".click").click(function(event) {
             var control = $("#controls").children().find('.active').attr('id');
-            var cuadro = $(this).find("input[name=cuadro]:hidden").val(); //obtenemos el valor del cuadro al que le dimos click
+            var cuadro = $(this).find("input[name=cuadro]:hidden").val();
+            console.log(control)
             switch (control) {
                 case "fractura":
                     if ($(this).hasClass("click-blue")) {
