@@ -10,7 +10,7 @@
     background-color: #FFFFFF;
     border: 1px solid #7F7F7F;
     position: relative;
-    width: 20px;
+    width: 25px;
     height: 15px;
     left: 45px;
     -webkit-border-radius: 80px 80px 0px 15px;
@@ -57,9 +57,9 @@
 .centro {
     background: #F3F3F3;
     border: 1px solid #7F7F7F;
-    width: 20px;
-    height: 18px;
-    top: -45px;
+    width: 25px;
+    height: 25px;
+    top: -49px;
     left: 45px;
     position: relative;
 }
@@ -71,55 +71,35 @@
     cursor: pointer;
 }
 
-.color {
-    width: 200px;
-    height: 200px;
-    position: relative;
-    margin: 0 auto;
-    padding: 3px;
-}
-
-.select {
-    width: 40px;
-    height: 40px;
-    margin: 2px;
-    background-color: #ccc;
-    display: inline-block;
-    cursor: pointer;
-}
-
-.select:hover {
-    border: 1px solid rgba(117, 198, 243, 0.4);
-}
-
-.content {
-    position: absolute;
-}
-
-.ui-dialog {
-    position: relative !important;
-}
-
-#tr {
+#tlr {
     border-bottom: 1px solid black;
     border-right: 1px solid black;
 }
+#tr {
+    border-right: 1px solid black;
+}
+#tll {
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+}
+#tl {
+    border-left: 1px solid black;
+}
 
+#blr {
+    border-right: 1px solid black;
+}
 #br {
     border-right: 1px solid black;
 }
-
-#tl {
-    border-bottom: 1px solid black;
-    border-left: 1px solid black;
-}
-
 #bl {
     border-left: 1px solid black;
 }
-
+#bll {
+    border-left: 1px solid black;
+}
 .click-red {
-    background-color: red;
+    background-color: red !important;
 }
 
 .click-blue {
@@ -127,9 +107,87 @@
 }
 
 .click-delete {
-    background-color: #747F7D;
+    background-color: #747F7D !important;
 }
 
 .kill {
     background-color: green;
+}
+
+.diente-leche {
+    position: relative;
+    width: 0px;
+    height: auto;
+    margin-left: 50px;
+    display: inline-block;
+}
+
+.cuadro-leche {
+    border: 1px solid #7F7F7F;
+    position: relative;
+    width: 13px;
+    height: 13px;
+    left: 45px;
+    -webkit-border-radius: 80px 80px 0px 15px;
+    -moz-border-radius: 80px 80px 0px 15px;
+    border-radius: 80px 80px 0px 15px;
+}
+
+.cuadro-leche:hover {
+    /*background: rgba(117, 198, 243, 0.4);*/
+    
+    cursor: pointer;
+}
+
+.izquierdo-leche {
+    top: -4px !important;
+    left: 37px !important;
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    transform: rotate(270deg);
+}
+
+.top-leche {
+    width: 15px;
+    left: 47px;
+}
+
+.debajo-leche {
+    width: 15px;
+    top: -8px !important;
+    left: 47px !important;
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.derecha-leche {
+    top: -30px !important;
+    left: 58px !important;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.centro-leche {
+    background: #F3F3F3;
+    border: 1px solid #7F7F7F;
+    width: 15px;
+    height: 13px;
+    top: -43px;
+    left: 47px;
+    position: relative;
+}
+
+.centro-leche:hover {
+    border: 1px solid rgba(117, 198, 243, 0.4);
+    /*background-color: rgba(117, 198, 243, 0.4);*/
+    
+    cursor: pointer;
 }
