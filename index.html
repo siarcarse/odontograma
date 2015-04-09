@@ -110,7 +110,7 @@
             a = 1;
         for (var i = 9 - 1; i >= 1; i--) {
             //Dientes Definitivos Cuandrante Derecho (Superior/Inferior)
-            htmlRight += '<div id="dienteindex' + i + '" class="diente">' +
+            htmlRight += '<div data-name="value" id="dienteindex' + i + '" class="diente">' +
                 '<span style="margin-left: 45px; margin-bottom:5px; display: inline-block !important; border-radius: 10px !important;" class="label label-info">index' + i + '</span>' +
                 '<div id="tindex' + i + '" class="cuadro click">' +
                 '</div>' +
@@ -249,30 +249,55 @@
                     });
                     break;
                 case "puente":
-                    var dientePosition = $(this).position();
+                    var dientePosition = $(this).position(), leftPX;
                     var noDiente = $(this).parent().children().first().text();
+                    var cuadrante = $(this).parent().parent().attr('id');
                     var left = 0,
                         width = 0;
                     if (arrayPuente.length < 1) {
                         $(this).parent().children('.cuadro').css('border-color', 'red');
                         arrayPuente.push({
                             diente: noDiente,
+                            cuadrante: cuadrante,
                             father: null
                         });
                     } else {
                         $(this).parent().children('.cuadro').css('border-color', 'red');
                         arrayPuente.push({
                             diente: noDiente,
+                            cuadrante: cuadrante,
                             father: arrayPuente[0].diente
                         });
                         var diferencia = Math.abs((parseInt(arrayPuente[1].diente) - parseInt(arrayPuente[1].father)));
                         if (diferencia == 1) width = diferencia * 60;
                         else width = diferencia * 50;
-                        $(this).parent().append('<div style="z-index: 9999; height: 5px; width:' + width + 'px;" id="puente" class="click-red"></div>');
+
+                        if(arrayPuente[0].cuadrante == arrayPuente[1].cuadrante) {
+                            if(arrayPuente[0].cuadrante == 'tr' || arrayPuente[0].cuadrante == 'tlr' || arrayPuente[0].cuadrante == 'br' || arrayPuente[0].cuadrante == 'blr') {
+                                if (arrayPuente[0].diente > arrayPuente[1].diente) {
+                                    leftPX = "-45px";
+                                }else {
+                                    leftPX = "45px";
+                                }
+                            }else {
+                                if (arrayPuente[0].diente < arrayPuente[1].diente) {
+                                    leftPX = "-45px";
+                                }else {
+                                    leftPX = "45px";
+                                }
+                            }
+                        }
+                        /*$(this).parent().append('<div style="z-index: 9999; height: 5px; width:' + width + 'px;" id="puente" class="click-red"></div>');
                         $(this).parent().children().last().css({
                             "position": "absolute",
                             "top": "80px",
                             "left": "50px"
+                        });*/
+                        $(this).parent().append('<div style="z-index: 9999; height: 5px; width:' + width + 'px;" id="puente" class="click-red"></div>');
+                        $(this).parent().children().last().css({
+                            "position": "absolute",
+                            "top": "80px",
+                            "left": leftPX
                         });
                     }
 
