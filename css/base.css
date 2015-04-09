@@ -1,5 +1,5 @@
 .diente {
-    position: relative;
+    position: static;
     width: 0px;
     height: auto;
     margin-left: 50px;
