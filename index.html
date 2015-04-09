@@ -232,13 +232,14 @@
                         if ($(el).hasClass("centro") || $(el).hasClass("centro-leche")) {
                             $(this).parent().append('<i style="color:red;" class="fa fa-times fa-3x fa-fw"></i>');
                             if ($(el).hasClass("centro")) {
-                                $(this).parent().children().last().css({
+                                //console.log($(this).parent().children("i"))
+                                $(this).parent().children("i").css({
                                     "position": "absolute",
                                     "top": "24%",
-                                    "left": "1.3ex"
+                                    "left": "18.58ex"
                                 });
                             } else {
-                                $(this).parent().children().last().css({
+                                $(this).parent().children("i").css({
                                     "position": "absolute",
                                     "top": "21%",
                                     "left": "1.2ex"
