@@ -103,7 +103,7 @@
 }
 
 .click-blue {
-    background-color: blue;
+    background-color: blue !important;
 }
 
 .click-delete {
