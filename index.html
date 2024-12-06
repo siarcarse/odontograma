@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Toth</title>
+    <title>Tooth</title>
     <!-- Bootstrap CSS -->
     <link href="css/base.css" rel="stylesheet">
     <link href="tools/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -309,8 +309,19 @@
                     }
 
                     break;
-                default:
-                    console.log("borrar case");
+                  default: // borrado
+                    if ($(event.currentTarget).hasClass('click-red') || $(event.currentTarget).hasClass('click-blue')) {
+                      $(event.currentTarget).removeClass('click-red click-blue')
+                    } else if (
+                      $(event.currentTarget).hasClass('click-delete')
+                    ) {
+                      $(event.currentTarget)
+                        .parent()
+                        .children()
+                        .each((index, el) => {
+                          $(el).removeClass('click-delete')
+                        })
+                    }                    
             }
             return false;
         });
