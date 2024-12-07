@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Toth</title>
+    <title>Tooth</title>
     <!-- Bootstrap CSS -->
     <link href="css/base.css" rel="stylesheet">
     <link href="tools/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -230,19 +230,19 @@
                     console.log(dientePosition)
                     $(this).parent().children().each(function(index, el) {
                         if ($(el).hasClass("centro") || $(el).hasClass("centro-leche")) {
-                            $(this).parent().append('<i style="color:red;" class="fa fa-times fa-3x fa-fw"></i>');
+                            $(this).parent().append('<i style="color:red; z-index: 9999" class="fa fa-times fa-3x fa-fw"></i>');
                             if ($(el).hasClass("centro")) {
                                 //console.log($(this).parent().children("i"))
                                 $(this).parent().children("i").css({
                                     "position": "absolute",
                                     "top": "24%",
-                                    "left": "18.58ex"
+                                    "margin-left": "30px"
                                 });
                             } else {
                                 $(this).parent().children("i").css({
                                     "position": "absolute",
                                     "top": "21%",
-                                    "left": "1.2ex"
+                                    "margin-left": "28px"
                                 });
                             }
                             //
@@ -309,8 +309,19 @@
                     }
 
                     break;
-                default:
-                    console.log("borrar case");
+                  default: // borrado
+                    if ($(event.currentTarget).hasClass('click-red') || $(event.currentTarget).hasClass('click-blue')) {
+                      $(event.currentTarget).removeClass('click-red click-blue')
+                    } else if (
+                      $(event.currentTarget).hasClass('click-delete')
+                    ) {
+                      $(event.currentTarget)
+                        .parent()
+                        .children()
+                        .each((index, el) => {
+                          $(el).removeClass('click-delete')
+                        })
+                    }                    
             }
             return false;
         });
